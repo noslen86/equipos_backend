@@ -1,0 +1,309 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type OperatingSystem {
+  id: Int!
+
+  """Nombre"""
+  name: String!
+
+  """Versión"""
+  version: String!
+
+  """Tipo de arquitectura"""
+  architecture: String!
+  computers: [Computer!]!
+}
+
+type RamMemory {
+  id: Int!
+
+  """Capacidad"""
+  capacity: String!
+
+  """Tipo"""
+  type: String!
+  computers: [Computer!]!
+}
+
+type TechnicalStatus {
+  id: Int!
+
+  """Nombre"""
+  name: String!
+  computers: [Computer!]!
+}
+
+type Micro {
+  id: Int!
+
+  """Nombre"""
+  name: String!
+
+  """Velocidad"""
+  speed: String!
+  computers: [Computer!]!
+}
+
+type Computer {
+  id: Int!
+
+  """Inventario"""
+  inventory: Int!
+
+  """Información adicional"""
+  description: String
+
+  """Ubicación"""
+  location: String!
+  hardDiskMain: HardDisk!
+  hardDiskSecondary: HardDisk!
+  micro: Micro!
+  operatingSystem: OperatingSystem!
+  ram: RamMemory!
+  technicalStatus: TechnicalStatus!
+}
+
+type HardDisk {
+  id: Int!
+
+  """Capacidad del disco duro"""
+  capacity: String!
+
+  """Marca del disco duro"""
+  brand: String!
+
+  """Modelo del disco duro"""
+  model: String
+
+  """Tipo de disco duro"""
+  type: String!
+  computers: [Computer!]!
+}
+
+type NomHardDiskModel {
+  id: Int!
+
+  """Nombre"""
+  name: String!
+  nomHardDiskBrand: NomHardDiskBrand!
+}
+
+type NomHardDiskBrand {
+  id: Int!
+
+  """Nombre"""
+  name: String!
+  nomHardDiskModels: NomHardDiskModel!
+}
+
+type NomHardDiskType {
+  id: Int!
+
+  """Nombre"""
+  name: String!
+  hardDisks: [HardDisk!]!
+}
+
+type Query {
+  hard_disks: [HardDisk!]!
+  hard_disk(id: Int!): HardDisk!
+  ram_memories: [RamMemory!]!
+  ram_memory(id: Int!): RamMemory!
+  technical_statuses: [TechnicalStatus!]!
+  technicalStatus(id: Int!): TechnicalStatus!
+  operating_systems: [OperatingSystem!]!
+  operating_system(id: Int!): OperatingSystem!
+  computers: [Computer!]!
+  computer(id: Int!): Computer!
+  micros: [Micro!]!
+  micro(id: Int!): Micro!
+  nomHardDiskBrandList: [NomHardDiskBrand!]!
+  nomHardDiskBrand(id: Int!): NomHardDiskBrand!
+  nomHardDiskModelList: [NomHardDiskModel!]!
+  nomHardDiskModel(id: Int!): NomHardDiskModel!
+  nomHardDiskTypeList: [NomHardDiskType!]!
+  nomHardDiskType(id: Int!): NomHardDiskType!
+}
+
+type Mutation {
+  createHardDisk(createHardDiskInput: CreateHardDiskInput!): HardDisk!
+  updateHardDisk(updateHardDiskInput: UpdateHardDiskInput!): HardDisk!
+  removeHardDisk(id: Int!): HardDisk!
+  createRamMemory(createRamMemoryInput: CreateRamMemoryInput!): RamMemory!
+  updateRamMemory(updateRamMemoryInput: UpdateRamMemoryInput!): RamMemory!
+  removeRamMemory(id: Int!): RamMemory!
+  createTechnicalStatus(createTechnicalStatusInput: CreateTechnicalStatusInput!): TechnicalStatus!
+  updateTechnicalStatus(updateTechnicalStatusInput: UpdateTechnicalStatusInput!): TechnicalStatus!
+  removeTechnicalStatus(id: Int!): TechnicalStatus!
+  createOperatingSystem(createOperatingSystemInput: CreateOperatingSystemInput!): OperatingSystem!
+  updateOperatingSystem(updateOperatingSystemInput: UpdateOperatingSystemInput!): OperatingSystem!
+  removeOperatingSystem(id: Int!): OperatingSystem!
+  createComputer(createComputerInput: CreateComputerInput!): Computer!
+  updateComputer(updateComputerInput: UpdateComputerInput!): Computer!
+  removeComputer(id: Int!): Computer!
+  createMicro(createMicroInput: CreateMicroInput!): Micro!
+  updateMicro(updateMicroInput: UpdateMicroInput!): Micro!
+  removeMicro(id: Int!): Micro!
+  createNomHardDiskBrand(createNomHardDiskBrandInput: CreateNomHardDiskBrandInput!): Boolean!
+  updateNomHardDiskBrand(updateNomHardDiskBrandInput: UpdateNomHardDiskBrandInput!): Boolean!
+  removeNomHardDiskBrand(id: Int!): NomHardDiskBrand!
+  createNomHardDiskModel(createNomHardDiskModelInput: CreateNomHardDiskModelInput!, nomHardDiskBrandId: Float!): NomHardDiskModel!
+  updateNomHardDiskModel(updateNomHardDiskModelInput: UpdateNomHardDiskModelInput!): NomHardDiskModel!
+  removeNomHardDiskModel(id: Int!): NomHardDiskModel!
+  createNomHardDiskType(createNomHardDiskTypeInput: CreateNomHardDiskTypeInput!): NomHardDiskType!
+  updateNomHardDiskType(updateNomHardDiskTypeInput: UpdateNomHardDiskTypeInput!): NomHardDiskType!
+  removeNomHardDiskType(id: Int!): NomHardDiskType!
+}
+
+input CreateHardDiskInput {
+  """Capacidad"""
+  capacity: String!
+
+  """Marca"""
+  brand: String!
+
+  """Modelo"""
+  model: String
+
+  """Tipo"""
+  type: String!
+}
+
+input UpdateHardDiskInput {
+  """Capacidad"""
+  capacity: String!
+
+  """Marca"""
+  brand: String!
+
+  """Modelo"""
+  model: String
+
+  """Tipo"""
+  type: String!
+  id: Int!
+}
+
+input CreateRamMemoryInput {
+  """Capacidad"""
+  capacity: String!
+
+  """Tipo de memoria RAM"""
+  type: String!
+}
+
+input UpdateRamMemoryInput {
+  """Capacidad"""
+  capacity: String!
+
+  """Tipo de memoria RAM"""
+  type: String!
+  id: Int!
+}
+
+input CreateTechnicalStatusInput {
+  """Nombre"""
+  name: String!
+}
+
+input UpdateTechnicalStatusInput {
+  """Nombre"""
+  name: String!
+  id: Int!
+}
+
+input CreateOperatingSystemInput {
+  """Nombre"""
+  name: String!
+
+  """Versión"""
+  version: String!
+
+  """Tipo de arquitectura"""
+  architecture: String!
+}
+
+input UpdateOperatingSystemInput {
+  """Nombre"""
+  name: String!
+
+  """Versión"""
+  version: String!
+
+  """Tipo de arquitectura"""
+  architecture: String!
+  id: Int!
+}
+
+input CreateComputerInput {
+  """Inventario"""
+  inventory: Float!
+
+  """Información adicional"""
+  description: String
+
+  """Ubicación"""
+  location: String!
+}
+
+input UpdateComputerInput {
+  """Inventario"""
+  inventory: Float
+
+  """Información adicional"""
+  description: String
+
+  """Ubicación"""
+  location: String
+  id: Int!
+}
+
+input CreateMicroInput {
+  """Nombre"""
+  name: String!
+
+  """Velocidad"""
+  speed: String!
+}
+
+input UpdateMicroInput {
+  """Nombre"""
+  name: String!
+
+  """Velocidad"""
+  speed: String!
+  id: Int!
+}
+
+input CreateNomHardDiskBrandInput {
+  name: String!
+}
+
+input UpdateNomHardDiskBrandInput {
+  name: String!
+  id: Int!
+}
+
+input CreateNomHardDiskModelInput {
+  """Nombre"""
+  name: String!
+}
+
+input UpdateNomHardDiskModelInput {
+  """Nombre"""
+  name: String!
+  id: Int!
+}
+
+input CreateNomHardDiskTypeInput {
+  """Nombre"""
+  name: String!
+}
+
+input UpdateNomHardDiskTypeInput {
+  """Nombre"""
+  name: String!
+  id: Int!
+}
