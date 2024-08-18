@@ -88,6 +88,7 @@ type NomHardDiskModel {
   """Nombre"""
   name: String!
   nomHardDiskBrand: NomHardDiskBrand!
+  nomHardDiskBrandId: Int!
 }
 
 type NomHardDiskBrand {
@@ -95,7 +96,7 @@ type NomHardDiskBrand {
 
   """Nombre"""
   name: String!
-  nomHardDiskModels: NomHardDiskModel!
+  nomHardDiskModels: [NomHardDiskModel!]!
 }
 
 type NomHardDiskType {
@@ -148,7 +149,7 @@ type Mutation {
   removeMicro(id: Int!): Micro!
   createNomHardDiskBrand(createNomHardDiskBrandInput: CreateNomHardDiskBrandInput!): Boolean!
   updateNomHardDiskBrand(updateNomHardDiskBrandInput: UpdateNomHardDiskBrandInput!): Boolean!
-  removeNomHardDiskBrand(id: Int!): NomHardDiskBrand!
+  removeNomHardDiskBrand(id: Int!): Boolean!
   createNomHardDiskModel(createNomHardDiskModelInput: CreateNomHardDiskModelInput!, nomHardDiskBrandId: Float!): NomHardDiskModel!
   updateNomHardDiskModel(updateNomHardDiskModelInput: UpdateNomHardDiskModelInput!): NomHardDiskModel!
   removeNomHardDiskModel(id: Int!): NomHardDiskModel!
@@ -289,11 +290,17 @@ input UpdateNomHardDiskBrandInput {
 input CreateNomHardDiskModelInput {
   """Nombre"""
   name: String!
+
+  """Id de la marca de disco duro"""
+  nomHardDiskBrandId: Int!
 }
 
 input UpdateNomHardDiskModelInput {
   """Nombre"""
   name: String!
+
+  """Id de la marca de disco duro"""
+  nomHardDiskBrandId: Int
   id: Int!
 }
 

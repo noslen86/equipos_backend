@@ -1,4 +1,4 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, Int } from '@nestjs/graphql';
 import { IsNotEmpty, MaxLength, MinLength } from 'class-validator';
 
 @InputType()
@@ -14,4 +14,10 @@ export class CreateNomHardDiskModelInput {
   })
   @Field(() => String, { description: 'Nombre' })
   name: string;
+
+  @IsNotEmpty({
+    message: 'Este campo es obligatorio.',
+  })
+  @Field(() => Int, { description: 'Id de la marca de disco duro' })
+  nomHardDiskBrandId: number;
 }

@@ -18,6 +18,6 @@ export class NomHardDiskBrand {
     (nomhardDiskModel: NomHardDiskModel) => nomhardDiskModel.nomHardDiskBrand,
     { cascade: true },
   )
-  @Field(() => NomHardDiskModel)
+  @Field(() => [NomHardDiskModel])
   nomHardDiskModels: NomHardDiskModel[];
 }

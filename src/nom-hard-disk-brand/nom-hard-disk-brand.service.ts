@@ -3,7 +3,7 @@ import { CreateNomHardDiskBrandInput } from './dto/create-nom-hard-disk-brand.in
 import { UpdateNomHardDiskBrandInput } from './dto/update-nom-hard-disk-brand.input';
 import { InjectRepository } from '@nestjs/typeorm';
 import { NomHardDiskBrand } from './entities/nom-hard-disk-brand.entity';
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 
 @Injectable()
 export class NomHardDiskBrandService {
@@ -39,7 +39,9 @@ export class NomHardDiskBrandService {
     return true;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} nomHardDiskBrand`;
+  async remove(id: number): Promise<boolean> {
+    const result: DeleteResult =
+      await this.nomHardDiskBrandRepository.delete(id);
+    return result.affected > 0;
   }
 }

@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { NomHardDiskBrandService } from './nom-hard-disk-brand.service';
 import { NomHardDiskBrand } from './entities/nom-hard-disk-brand.entity';
 import { CreateNomHardDiskBrandInput } from './dto/create-nom-hard-disk-brand.input';
@@ -43,8 +43,10 @@ export class NomHardDiskBrandResolver {
     );
   }
 
-  @Mutation(() => NomHardDiskBrand)
-  removeNomHardDiskBrand(@Args('id', { type: () => Int }) id: number) {
+  @Mutation(() => Boolean)
+  async removeNomHardDiskBrand(
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<boolean> {
     return this.nomHardDiskBrandService.remove(id);
   }
 }

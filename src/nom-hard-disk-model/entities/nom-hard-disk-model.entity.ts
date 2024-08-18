@@ -19,4 +19,8 @@ export class NomHardDiskModel {
   )
   @Field(() => NomHardDiskBrand)
   nomHardDiskBrand: NomHardDiskBrand;
+
+  @Field(() => Int)
+  @Column({ type: 'integer', nullable: false })
+  nomHardDiskBrandId: number;
 }
